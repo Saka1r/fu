@@ -6,17 +6,22 @@
 
 int main(int argc, char* argv[])
 {
-    if(argc >= 2){
-        if(strcmp(argv[1], "init") == 0)
-            init_repo();
-        else{
-            std::println("Unknown team: {}", argv[1]);
+    if (argc >= 2) {
+    if (strcmp(argv[1], "init") == 0) {
+        init_repo();
+    } else if (strcmp(argv[1], "add") == 0) {
+        if (argc >= 3) {
+            add(argv[2]);
+        } else {
+            std::println("No [FLAG] specified for add command.");
             help();
         }
-    }
-    else{
-        help();
-    }
+    } else {
+        std::println("Unknown command: {}", argv[1]);
+        help();}
+    } else {
+        std::println("Insufficient arguments.");
+        help();}
     
     return 0;
 }

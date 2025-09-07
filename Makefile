@@ -2,7 +2,7 @@ CXX = clang++ -std=c++23
 CFLAGS = -O2 
 NAME_PROJECT = fu
 
-SRC = src/main.cpp src/init.cpp src/add.cpp
+SRC = src/main.cpp src/init.cpp src/add.cpp src/file.cpp
 
 default: build
 
