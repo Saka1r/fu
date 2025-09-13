@@ -4,6 +4,7 @@ LIB = -I/src/zlib/ -L/src/zlib/lib/ -lz
 NAME_PROJECT = fu
 
 SRC = src/main.cpp src/init.cpp src/add.cpp src/file.cpp src/objects.cpp
+OBJ = $(SRC:.cpp=.o)
 
 default: build
 
@@ -12,13 +13,18 @@ run: build
 	./$(NAME_PROJECT)
 	
 .PHONY: build
-build:
-	@echo "Start build"
-	$(CXX) $(CFLAGS) -o $(NAME_PROJECT) $(SRC) $(LIB)
+build: $(NAME_PROJECT)
+
+$(NAME_PROJECT): $(OBJ)
+	@echo "Linking..."
+	$(CXX) $(CFLAGS) -o $@ $^ $(LIB)
+
+%.o: %.cpp
+	@echo "Compiling $<"
+	$(CXX) $(CFLAGS) -c $< -o $@
 
 .SILENT: clean
 .PHONY: clean
 clean:
-	rm -rf $(NAME_PROJECT)
-	rm -rf .fu
+	rm -rf $(NAME_PROJECT) $(OBJ)
 	

@@ -24,6 +24,7 @@ int inspect_file_or_dir(std::string target)
 void add(std::string target)
 {
     int out = inspect_file_or_dir(target);
-    if(out == 0)
+    if(out == 0){
         std::string result = read_file(target);
+        std::println("{}", result);}
 }
