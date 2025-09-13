@@ -4,20 +4,23 @@
 #include <vector>
 #include "include/file.hpp"
 
-int read_file(std::string name_file){
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
 
-    std::string line;
-    std::vector<std::string> text;
-
+std::string read_file(const std::string& name_file) {
     std::ifstream file(name_file);
-    if(file.is_open()){
-        while(std::getline(file, line)){
-            text.push_back(line);
-        }
-        file.close();
-    } else
-        std::println("The file clout not be opened");
-    
-    return 0;
+    if (!file.is_open()) {
+        std::cerr << "The file could not be opened" << std::endl;
+        return ""; // Возрат пустой строки в случаии ошибки!
+    }
+
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    file.close();
+
+    return buffer.str();
 }
+
 int write_file();

@@ -25,5 +25,5 @@ void add(std::string target)
 {
     int out = inspect_file_or_dir(target);
     if(out == 0)
-        int result = read_file(target);
+        std::string result = read_file(target);
 }

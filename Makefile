@@ -1,8 +1,9 @@
 CXX = clang++ -std=c++23
-CFLAGS = -O2 
+CFLAGS = -O2 -static
+LIB = -I/src/zlib/ -L/src/zlib/lib/ -lz
 NAME_PROJECT = fu
 
-SRC = src/main.cpp src/init.cpp src/add.cpp src/file.cpp
+SRC = src/main.cpp src/init.cpp src/add.cpp src/file.cpp src/objects.cpp
 
 default: build
 
@@ -13,7 +14,7 @@ run: build
 .PHONY: build
 build:
 	@echo "Start build"
-	$(CXX) $(CFLAGS) -o $(NAME_PROJECT) $(SRC)
+	$(CXX) $(CFLAGS) -o $(NAME_PROJECT) $(SRC) $(LIB)
 
 .SILENT: clean
 .PHONY: clean
