@@ -1,7 +1,9 @@
 #include <print>
 #include <string>
 #include <filesystem>
+#include <vector>
 #include "include/file.hpp"
+#include "include/objects.hpp"
 
 int inspect_file_or_dir(std::string target)
 {
@@ -25,6 +27,10 @@ void add(std::string target)
 {
     int out = inspect_file_or_dir(target);
     if(out == 0){
+        std::vector<std::string> text;
         std::string result = read_file(target);
-        std::println("{}", result);}
+        text.push_back(result);
+        std::println("{}", result);
+        auto s = create_blob(text);
+    }
 }
