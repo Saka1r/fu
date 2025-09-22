@@ -27,4 +27,4 @@ $(NAME_PROJECT): $(OBJ)
 .PHONY: clean
 clean:
 	rm -rf $(NAME_PROJECT) $(OBJ)
-	
+	rm -rf .fu

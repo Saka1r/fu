@@ -2,6 +2,17 @@
 #include <print>
 #include <filesystem>
 
+void create_head_file()
+{
+    std::ofstream file;
+    file.open(".fu/HEAD");
+    if(file.is_open()){
+        file << "" << std::endl;
+    }
+    file.close();
+
+}
+
 void create_index_file()
 {
     std::ofstream file;
@@ -20,6 +31,7 @@ bool create_repo_dir()
         return result;
     }
     else {
+        std::filesystem::create_directory(".fu/blobs");
         std::println("Create Repo XD");
         return result;
     }
@@ -30,5 +42,6 @@ void init_repo()
     auto result = create_repo_dir();
     if (result == 1){
         create_index_file();
+        create_head_file();
     }
 }

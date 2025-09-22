@@ -30,7 +30,6 @@ void add(std::string target)
         std::vector<std::string> text;
         std::string result = read_file(target);
         text.push_back(result);
-        std::println("{}", result);
-        auto s = create_blob(text);
+        auto s = create_blob(text, target);
     }
 }
