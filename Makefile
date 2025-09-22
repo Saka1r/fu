@@ -3,7 +3,7 @@ CFLAGS = -O2 -static
 LIB = -I/src/zlib/ -L/src/zlib/lib/ -lz
 NAME_PROJECT = fu
 
-SRC = src/main.cpp src/init.cpp src/add.cpp src/file.cpp src/objects.cpp
+SRC = src/main.cpp src/init.cpp src/add.cpp src/file.cpp src/objects.cpp src/commit.cpp
 OBJ = $(SRC:.cpp=.o)
 
 default: build
