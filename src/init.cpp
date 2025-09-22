@@ -32,6 +32,9 @@ bool create_repo_dir()
     }
     else {
         std::filesystem::create_directory(".fu/blobs");
+        std::filesystem::create_directory(".fu/commits");
+        //std::filesystem::create_directory(".fu/user");
+
         std::println("Create Repo XD");
         return result;
     }
