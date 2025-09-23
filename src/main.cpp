@@ -8,6 +8,18 @@
 #include "include/objects.hpp"
 #include "include/commit.hpp"
 
+std::string read_all_input() {
+    std::string input;
+    std::string line;
+
+    // Считываем строки до конца ввода
+    while (std::getline(std::cin, line)) {
+        input += line + " ";
+    }
+
+    return input;
+}
+
 int main(int argc, char* argv[])
 {
     if (argc >= 2) {
@@ -24,7 +36,8 @@ int main(int argc, char* argv[])
     }
     else if (strcmp(argv[1], "commit") == 0) {
         std::string user_message;
-        std::cin >> user_message;
+        std::print("Message: ");
+        user_message = read_all_input();
         commit(user_message);
     } 
     else {
