@@ -9,6 +9,7 @@ inline void help()
     std::println("init: - Initilization repo");
     std::println("add [FLAG]: - This command updates the index using the current content");
     std::println("commit - This command updates the HEAD using content in index");
+    std::println("back [FLAG] - This command allows you to roll back to the previous commit");
 }
 
 #endif /*HELPER*/

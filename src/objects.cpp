@@ -1,39 +1,10 @@
-#include <cstdio>
-#include <iostream>
-#include <print>
 #include <string>
 #include <vector>
-#include "zlib/zlib.h"
 
 #include "include/objects.hpp"
 #include "include/sha1.hpp"
 #include "include/file.hpp"
-
-std::string compressString(const std::string& str) {
-    uLongf compressedSize = compressBound(str.size());
-    std::string compressedData(compressedSize, '\0');
-
-    if (compress(reinterpret_cast<Bytef*>(&compressedData[0]), &compressedSize,
-                 reinterpret_cast<const Bytef*>(str.data()), str.size()) != Z_OK) {
-        throw std::runtime_error("Compression failed");
-    }
-
-    compressedData.resize(compressedSize); // Уменьшаем размер до фактического размера
-    return compressedData;
-}
-
-std::string decompressString(const std::string& compressedStr) {
-    uLongf decompressedSize = compressedStr.size() * 4; // Предполагаем, что разжатый размер не превышает 4x
-    std::string decompressedData(decompressedSize, '\0');
-
-    while (uncompress(reinterpret_cast<Bytef*>(&decompressedData[0]), &decompressedSize,
-        reinterpret_cast<const Bytef*>(compressedStr.data()), compressedStr.size()) == Z_BUF_ERROR) {
-        decompressedSize *= 2; // Увеличиваем размер буфера
-        decompressedData.resize(decompressedSize);
-    }
-
-    return decompressedData;
-}
+#include "include/decoder.hpp"
 
 std::string compress_blob(std::vector<std::string> file_text)
 {    
@@ -43,7 +14,7 @@ std::string compress_blob(std::vector<std::string> file_text)
         combinedText += text + "\n"; // Объединяем текст с разделителем
     }
 
-    std::string content = compressString(combinedText); // Сжимаем объединенный текст
+    std::string content = compress_string(combinedText); // Сжимаем объединенный текст
     return content; 
 }
 
@@ -55,7 +26,7 @@ int create_blob(std::vector<std::string> file_text, std::string name_file, int f
         combinedText += text + "\n"; // Объединяем текст с разделителем
     }
     
-    std::string content = compressString(combinedText); // Сжимаем объединенный текст
+    std::string content = compress_string(combinedText); // Сжимаем объединенный текст
  
     
     SHA1 checksum;
@@ -71,4 +42,3 @@ int create_blob(std::vector<std::string> file_text, std::string name_file, int f
     return 0;
 }
 int create_tree(std::vector<std::string> blobs);
-int create_commit(std::vector<std::string> trees);

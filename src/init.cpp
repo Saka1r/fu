@@ -2,6 +2,17 @@
 #include <print>
 #include <filesystem>
 
+void create_commit_list_file()
+{
+    std::ofstream file;
+    file.open(".fu/LIST");
+    if(file.is_open()){
+        file << "" << std::endl;
+    }
+    file.close();
+
+}
+
 void create_head_file()
 {
     std::ofstream file;
@@ -46,5 +57,6 @@ void init_repo()
     if (result == 1){
         create_index_file();
         create_head_file();
+        create_commit_list_file();
     }
 }

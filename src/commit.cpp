@@ -17,4 +17,6 @@ void commit(std::string message)
     auto result = write_commit(name_file, content);
     if (result == 1)
         std::println("Error: failed to create a commit");
+    else
+        write_commit_list(name_file);
 }

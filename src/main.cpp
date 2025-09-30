@@ -5,8 +5,8 @@
 #include "include/init.hpp"
 #include "include/add.hpp"
 #include "include/helper.hpp"
-#include "include/objects.hpp"
 #include "include/commit.hpp"
+#include "include/back.hpp"
 
 std::string read_all_input() {
     std::string input;
@@ -39,7 +39,15 @@ int main(int argc, char* argv[])
         std::print("Message: ");
         user_message = read_all_input();
         commit(user_message);
-    } 
+    }
+    else if (strcmp(argv[1], "back") == 0) {
+        if (argc >= 3) {
+            roll_back(argv[2]);
+        } else {
+            std::println("No [FLAG] specified for back command.");
+            help();
+        }
+    }
     else {
         std::println("Unknown command: {}", argv[1]);
         help();}
