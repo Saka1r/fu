@@ -1,5 +1,4 @@
 #include <cstring>
-#include <print>
 #include <iostream>
 
 #include "include/init.hpp"
@@ -30,13 +29,13 @@ int main(int argc, char* argv[])
         if (argc >= 3) {
             add(argv[2]);
         } else {
-            std::println("No [FLAG] specified for add command.");
+            std::cout << "No [FLAG] specified for add command." << std::endl;
             help();
         }
     }
     else if (strcmp(argv[1], "commit") == 0) {
         std::string user_message;
-        std::print("Message: ");
+        std::cout << "Message: ";
         user_message = read_all_input();
         commit(user_message);
     }
@@ -44,15 +43,15 @@ int main(int argc, char* argv[])
         if (argc >= 3) {
             roll_back(argv[2]);
         } else {
-            std::println("No [FLAG] specified for back command.");
+            std::cout << "No [FLAG] specified for back command.";
             help();
         }
     }
     else {
-        std::println("Unknown command: {}", argv[1]);
+        std::cout << "Unknown command: ", argv[1];
         help();}
     } else {
-        std::println("Insufficient arguments.");
+        std::cout << "Insufficient arguments." << std::endl;
         help();}
     
     return 0;

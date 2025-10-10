@@ -1,5 +1,5 @@
 #include <fstream>
-#include <print>
+#include <iostream>
 #include <filesystem>
 
 void create_commit_list_file()
@@ -38,7 +38,7 @@ bool create_repo_dir()
 {
     auto result = std::filesystem::create_directory(".fu");
     if (result == false){
-        std::println("The repository is already initialized");
+        std::cout << "The repository is already initialized" << std::endl;
         return result;
     }
     else {
@@ -46,7 +46,7 @@ bool create_repo_dir()
         std::filesystem::create_directory(".fu/commits");
         //std::filesystem::create_directory(".fu/user");
 
-        std::println("Create Repo XD");
+        std::cout << "Create Repo XD" << std::endl;
         return result;
     }
 }

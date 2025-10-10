@@ -3,7 +3,7 @@
 #include "include/file.hpp"
 
 #include <iostream>
-#include <print>
+#include <iostream>
 #include <sstream>
 
 std::string read_file(const std::string& target) {
@@ -102,7 +102,7 @@ int write_commit(std::string name_commit, std::string content)
     file_write.close();
     auto result = write_commit_head(name_commit);
     if (result == 1)
-        std::println("Error write commit in HEAD");
+        std::cout << "Error write commit in HEAD" << std::endl;
     return 0; 
 }
 

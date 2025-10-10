@@ -1,4 +1,3 @@
-#include <print>
 #include <string>
 #include <filesystem>
 #include <vector>
@@ -121,7 +120,7 @@ int inspect_file_or_dir(std::string target)
         } else;
 
     } else{
-        std::println("Unknown: file does not exist");
+        std::cout << "Unknown: file does not exist" << std::endl;
         return 3;}
     return 4; 
 }
@@ -138,10 +137,10 @@ void add(std::string target)
             auto s = create_blob(text, target, 0);
         }
         else if (out == 1){
-            std::println("The new version of the file has already been registered");
+            std::cout << "The new version of the file has already been registered" << std::endl;
         }
         else if (out == 2){
-            std::println("The new version of the file add in index");
+            std::cout << "The new version of the file add in index" << std::endl;
         }
    }
 }

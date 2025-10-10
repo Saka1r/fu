@@ -1,6 +1,6 @@
 #include "include/decoder.hpp"
 #include "zlib/zlib.h"
-#include "sha1.h"
+#include "include/sha1.hpp"
 
 #include <string>
 #include <iostream>

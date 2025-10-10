@@ -2,8 +2,6 @@
 #include "include/file.hpp"
 #include "include/sha1.hpp"
 
-#include <print>
-
 void commit(std::string message)
 {
     std::string file_text;
@@ -16,7 +14,7 @@ void commit(std::string message)
     auto name_file = hash.final();
     auto result = write_commit(name_file, content);
     if (result == 1)
-        std::println("Error: failed to create a commit");
+        std::cout << "Error: failed to create a commit"<< std::endl;
     else
         write_commit_list(name_file);
 }

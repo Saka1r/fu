@@ -5,7 +5,6 @@
 #include <string>
 #include <sstream>
 #include <map>
-#include <print>
 #include <iostream>
 
 std::string read_commit(std::string name_commit)
@@ -18,7 +17,7 @@ std::string read_commit(std::string name_commit)
 
     while (std::getline(input, line)) {
         // Пропускаем строки с commit и message
-        if (line.starts_with("commit") || line.starts_with("message")) {
+        if (line.find("commit") == 0 || line.find("message") == 0) {
             continue;
         }
 
@@ -87,7 +86,7 @@ void roll_back(std::string name_commit)
     auto content = read_commit(name_commit);
     int result = overwrite_index(content);
     if (result == 1){
-        std::print("Error overwrite index");}
+        std::cout << "Error overwrite index" << std::endl;}
     else {
         back_files();}
 
