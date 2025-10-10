@@ -1,5 +1,5 @@
-CXX = clang++ -std=c++23
-CFLAGS = -O2 -static
+CXX = g++ -std=c++17
+CFLAGS = -O2 -static 
 LIB = -I/src/zlib/ -L/src/zlib/lib/ -lz
 NAME_PROJECT = fu
 
