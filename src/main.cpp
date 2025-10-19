@@ -11,8 +11,9 @@ std::string read_all_input() {
     std::string input;
     std::string line;
 
-    // Считываем строки до конца ввода
     while (std::getline(std::cin, line)) {
+        if (line.empty()) 
+            break;
         input += line + " ";
     }
 
