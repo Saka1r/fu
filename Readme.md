@@ -11,7 +11,7 @@ Fu has basic commands such as:
 
 <code>fu add [FLAG]</code> To add files to the repository, where [FLAG] is the name or path to the file.
 
-<code>fu commit</code> To create commits
+<code>fu commit</code> To create commits.
 
 <code>fu back [FLAG]</code> To revert to an older version, where [FLAG] is the name of the commit to revert.
 
